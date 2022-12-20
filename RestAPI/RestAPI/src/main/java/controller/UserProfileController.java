@@ -1,9 +1,9 @@
 package controller;
 
 import model.UserProfile;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.PostConstruct;
@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 // 해당 클래스는 컨트롤러이며 자동으로 인스턴스 생성
-@Controller
+@RestController
 public class UserProfileController {
     private Map<String, UserProfile> userMap;
 
@@ -25,20 +25,13 @@ public class UserProfileController {
         System.out.println(userMap);
     }
 
-
-    @GetMapping("/user/{id}")
     // @PathVariable("id") 요 아이디가 path에 있는 id로 파라미터로 가져오도록 함
+    @GetMapping("/user/{id}")
+    @ResponseBody
     public UserProfile getUserProfile(@PathVariable("id") String id){
         // UserProfile 객체 리턴하면 자동으로 JSON형태로 만들어줌
-        System.out.println("hello");
         return userMap.get(id);
     }
 
-
-    @GetMapping("/")
-    // @PathVariable("id") 요 아이디가 path에 있는 id로 파라미터로 가져오도록 함
-    public void main(){
-        System.out.println(userMap);
-
-    }
 }
+
