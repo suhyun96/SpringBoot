@@ -1,4 +1,4 @@
-package model;
+package com.example.RestAPI.model;
 
 public class UserProfile {
     private String id;
