@@ -1,6 +1,8 @@
-package com.example.sbb;
+package question;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
 
 //레포지토리 만들기 위해서 JpaRepositry 인터페이스 상속
 //JpaRepositry 상속시 대상이 되는 엔티티 와 PK속성 넣어줘야함 ! = 규칙
@@ -10,5 +12,8 @@ public interface QuestionRepository extends JpaRepository<Question , Integer> {
     Question findBySubject(String subject);
 
     Question findBySubjectAndContent(String subject , String content);
+
+    List<Question> findBySubjectLike(String subject);
+
 
 }
