@@ -1,6 +1,6 @@
-package question;
+package com.example.sbb.question;
 
-import answer.Answer;
+import com.example.sbb.answer.Answer;
 import lombok.Getter;
 import lombok.Setter;
 

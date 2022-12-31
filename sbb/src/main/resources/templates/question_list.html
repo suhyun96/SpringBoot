@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>제목</th>
+        <th>작성일시</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!--th 로 시작 : 타임리프 -->
+    <!--questionList = Question 객체의 리스트들 ! -->
+    <!--<tr> </tr> 이 엘리먼트를 questionList갯수 만큼 반복 출력  = for eatch -->
+    <!--question 객체에서 하나씩 제목이랑 날짜를 표시함 -->
+    <tr th:each="question : ${questionList}">
+        <td th:text="${question.subject}"></td>
+        <td th:text="${question.createDate}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

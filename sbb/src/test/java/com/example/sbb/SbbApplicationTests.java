@@ -3,14 +3,14 @@ package com.example.sbb;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import answer.Answer;
-import answer.AnswerRepository;
+import com.example.sbb.answer.Answer;
+import com.example.sbb.answer.AnswerRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.web.WebAppConfiguration;
-import question.Question;
-import question.QuestionRepository;
+import com.example.sbb.question.Question;
+import com.example.sbb.question.QuestionRepository;
 
 import javax.transaction.Transactional;
 import java.time.LocalDateTime;
