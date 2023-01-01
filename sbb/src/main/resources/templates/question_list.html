@@ -17,8 +17,12 @@
     <!--questionList = Question 객체의 리스트들 ! -->
     <!--<tr> </tr> 이 엘리먼트를 questionList갯수 만큼 반복 출력  = for eatch -->
     <!--question 객체에서 하나씩 제목이랑 날짜를 표시함 -->
-    <tr th:each="question : ${questionList}">
-        <td th:text="${question.subject}"></td>
+    <tr th:each="question, index : ${questionList}">
+        <td>
+            <!--th:href -> 링크 주소 속성 -->
+            <!-- url 주소 넣을 때는 @{ } 안에 넣어야함  또한 변수가 들어간 경우 @{| |} 이렇게 넣어야 에러 없이 나옴 -->
+            <a th:href="@{|/question/detail/${question.id}|}" th:text="${question.subject}"></a>
+        </td>
         <td th:text="${question.createDate}"></td>
     </tr>
     </tbody>
