@@ -1,0 +1,8 @@
+/*텍스트를 100퍼로 화면 체우고 */
+textarea {
+    width:100%;
+}
+/*답변 버튼을 위에서 10정도 띄움*/
+input[type=submit] {
+    margin-top:10px;
+}
