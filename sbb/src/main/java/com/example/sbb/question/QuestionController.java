@@ -14,11 +14,15 @@ import java.util.List;
 @Controller
 public class QuestionController {
 
-    private final QuestionRepository questionRepository;
+    //리포지토리 삭제
+   // private final QuestionRepository questionRepository;
+
+    // 리포지토리 대신 서비스로 불러서 모듈화 -> 서비스가 컨트롤의 일을 대신 하도록
+    private final QuestionService questionService;
     @GetMapping("/question/list")
    // @ResponseBody
     public String list(Model model){
-        List<Question> questionList = this.questionRepository.findAll();
+        List<Question> questionList = this.questionService.getList();
         // model 객체는 자바 클래스와 템플릿간 연결고리 !
         // model에 값을 담아두면 템플리셍서 그 값 사용 가능  -> 객체 생성 불필요 컨트롤러 메서드에 매개변수 지정하면 자동 모델 객체 생성
         model.addAttribute("questionList", questionList);

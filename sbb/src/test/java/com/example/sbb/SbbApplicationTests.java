@@ -105,8 +105,8 @@ class SbbApplicationTests {
 
     @Test
     void testDelete() {
-        assertEquals(2, this.questionRepository.count());
-        Optional<Question> oq = this.questionRepository.findById(1);
+        assertEquals(1, this.questionRepository.count());
+        Optional<Question> oq = this.questionRepository.findById(2);
         assertTrue(oq.isPresent());
         Question q = oq.get();
         this.questionRepository.delete(q);
