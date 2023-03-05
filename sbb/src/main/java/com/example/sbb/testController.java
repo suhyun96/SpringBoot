@@ -14,7 +14,7 @@ import java.util.Map;
 @RequestMapping("api/test")
 public class testController {
 
-    @PostMapping(path = "/post1")
+/*    @PostMapping(path = "/post1")
     public String testPost(Map<String,String> query){
         StringBuilder sb =new StringBuilder();
         query.entrySet().forEach(entry ->{
@@ -23,8 +23,9 @@ public class testController {
 
         });
         return sb.toString();
-    }
+    }*/
 
+    //https://bkjo94.tistory.com/entry/%EC%8A%A4%ED%94%84%EB%A7%81-%EB%B6%80%ED%8A%B8Spring-Boot%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-POST-REST-API-%EA%B5%AC%ED%98%84
 
     @PostMapping(path="/post2")
     public String testpost2(@RequestBody User user){
