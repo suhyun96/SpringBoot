@@ -11,7 +11,30 @@
     <!--result type = 리턴타입인데 맵이라고 하네 -->
     <!--sql 문을 넣어서 해당 결과를 받음-->
     <select id="doCoffeeList" resultType="map">
-        SELECT coffee_id, name, kind, price, DATE_FORMAT(reg_day,'%Y.%m.%d') AS reg_day, DATE_FORMAT(mod_day,'%Y.%m.%d') AS mod_day FROM coffee
+        SELECT coffee_id, name, kind, price, DATE_FORMAT(reg_day,'%Y.%m.%d') AS reg_day, DATE_FORMAT(mod_day,'%Y.%m.%d') AS mod_day
+        FROM coffee
+        WHERE 1=1
+        <!--등록 기간 쿼리 -->
+        <!--if = choose  여기서 인터페이스에 있는 파라미터를 여기서 쓰네! -->
+        <choose>
+            <when test="strStart_date == null">
+                AND reg_day >= date_add(now(), INTERVAL-7 DAY)
+            </when>
+            <otherwise>
+                AND reg_day >= DATE_FORMAT( #{strStart_date}, '%Y,%m,%d')
+                AND reg_day <![CDATA[ < ]]> date_add(DATE_FORMAT(#{strEnd_date},'%Y,%m,%d'), INTERVAL+1 DAY)
+            </otherwise>
+        </choose>
+
+        <if test="strName != null and strName !=''">
+            AND name like CONCAT(#{strName},'%')
+        </if>
+
+        <!--종류 쿼리-->
+        <if test="strKind != null and strKind != 'ALL'">
+            AND kind = #{strKind}
+        </if>
 
     </select>
+
 </mapper>

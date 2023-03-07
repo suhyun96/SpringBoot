@@ -20,4 +20,12 @@ public class CoffeeV1Service {
 
         return list;
     }
+
+    // 파라미터만 다른 오버로딩
+    public List<Map<String, String>> doCoffeeList(String strStartDate, String strEndDate, String strName, String strKind) {
+        // dao에서 가지고 와야 쓰지! 즉 맵퍼
+        List<Map<String,String>> list = coffeeV1Dao.doCoffeeList(strStartDate,strEndDate,strName,strKind);
+
+        return list;
+    }
 }

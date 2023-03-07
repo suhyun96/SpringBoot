@@ -14,4 +14,6 @@ public interface CoffeeV1Dao {
     List<Map<String, String>> doCoffeeList();
 
 
+    // 전체리스트 조회 - 함수 오버로딩
+    List<Map<String, String>> doCoffeeList(String strStart_date,String strEnd_date,String strName,String strKind);
 }

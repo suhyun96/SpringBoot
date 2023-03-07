@@ -19,7 +19,8 @@
 
   <div id="search" style="height: 150px;padding: 15px; font-size: small">
     <h3>[ JavaScript (No jQuery) , No Vo, No Yaml ]</h3>
-    <form name="coffeeV1" autocomplete="on" action="/coffeeV1">
+
+    <form name="coffeeV1" autocomplete="on" action="/v1/coffee" method="post">
       <fieldset>
         <legend> [검색조건] </legend>
         <label>등록기간</label><input type="date" id="start_date" name="start_date" min="2020-01-01" max="2023-12-31">
@@ -51,6 +52,7 @@
       <th>가격</th>
       <th>등록일</th>
       <th>수정일</th>
+      <th>수정</th>
       <th>삭제</th>
     </tr>
     </thead>
@@ -87,6 +89,10 @@
   /* 현재 시간 날짜에 적용시키기 */
   document.getElementById("start_date").value=new Date().toISOString().slice(0,10);
   document.getElementById("end_date").value=new Date().toISOString().slice(0,10);
+  const now = new Date();	// 현재 날짜 및 시간
+  const time7 = new Date(now.setDate(now.getDate() - 400));	// 400일전
+  document.getElementById("start_date").value= time7.toISOString().slice(0,10);
+  document.getElementById("end_date").value= new Date().toISOString.slice(0,10);
 </script>
 </body>
 </html>
