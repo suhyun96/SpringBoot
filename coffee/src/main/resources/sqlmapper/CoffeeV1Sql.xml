@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--네임스페이스에서 dao 파일 경로 넣어주기 -->
+<mapper namespace="com.example.coffee.dao.CoffeeV1Dao">
+    <!--쿼리문 작성 보아하니 dao인터페이스에 있는 걸 여기에서 받아서 쓰나보군 return값을-->
+    <!--전체리스트 조회-->
+
+    <!--id는 dao에 있는 메서드이름-->
+    <!--result type = 리턴타입인데 맵이라고 하네 -->
+    <!--sql 문을 넣어서 해당 결과를 받음-->
+    <select id="doCoffeeList" resultType="map">
+        SELECT coffee_id, name, kind, price, DATE_FORMAT(reg_day,'%Y.%m.%d') AS reg_day, DATE_FORMAT(mod_day,'%Y.%m.%d') AS mod_day FROM coffee
+
+    </select>
+</mapper>

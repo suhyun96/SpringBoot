@@ -57,29 +57,24 @@
 
 
     <tbody id="t_body">
-    <tr class="tr_td">
-      <td><input type="checkbox" name="coffee_id" value="ID"></td>
-      <td>ID</td>
-      <td>메뉴명</td>
-      <td>종류</td>
-      <td>가격</td>
-      <td>등록일</td>
-      <td>수정일</td>
-      <td>수정</td>
-      <td>삭제</td>
-    </tr>
+    <!--모델에서 받은 데이터 출력-->
+      <th:block th:each="coffeeV1 : ${list}">
+        <tr class="tr_td">
+          <td><input type="checkbox" name="coffee_id" value="ID"></td>
+          <td th:text="${coffeeV1.get('coffee_id')}">ID</td>
+          <td th:text="${coffeeV1.get('name')}">메뉴명</td>
+          <td th:text="${coffeeV1.get('kind')}">종류</td>
+          <td th:text="${coffeeV1.get('price')}">가격</td>
+          <td th:text="${coffeeV1.get('reg_day')}">등록일</td>
+          <td th:text="${coffeeV1.get('mod_day')}">수정일</td>
+          <td><a th:href="@{/v1/update(coffee_id=${coffeeV1.get('coffee_id')})}">수정</a></td>
+          <td><a th:href="@{/v1/delete(coffee_id=${coffeeV1.get('coffee_id')})}">삭제</a></td>
+        </tr>
+      </th:block>
 
-    <tr>
-      <td><input type="checkbox" name="coffee_id" value="ID"></td>
-      <td>ID</td>
-      <td>메뉴명</td>
-      <td>종류</td>
-      <td>가격</td>
-      <td>등록일</td>
-      <td>수정일</td>
-      <td>수정</td>
-      <td>삭제</td>
-    </tr>
+
+
+
     </tbody>
   </table>
 </div>
