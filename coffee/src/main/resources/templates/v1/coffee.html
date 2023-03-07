@@ -38,6 +38,8 @@
         <!--버튼 누르면 하이퍼링크로 -->
         &nbsp;&nbsp;<button style="width: 80px;height: 30px;font-weight: bold; font-size: medium"><a href="/v1/insert">등록</a></button>
           <button style="width: 80px;height: 30px;font-weight: bold; font-size: medium"><a href="/v1/deleteAll">삭제</a></button>
+        <!---->
+        <a href="javascript:loadDocArray()" >ajax</a>
       </fieldset>
     </form>
   </div>
@@ -88,12 +90,66 @@
 
 <script>
   /* 현재 시간 날짜에 적용시키기 */
-  document.getElementById("start_date").value=new Date().toISOString().slice(0,10);
-  document.getElementById("end_date").value=new Date().toISOString().slice(0,10);
+  //document.getElementById("start_date").value=new Date().toISOString().slice(0,10);
+  //document.getElementById("end_date").value=new Date().toISOString().slice(0,10);
   const now = new Date();	// 현재 날짜 및 시간
   const time7 = new Date(now.setDate(now.getDate() - 400));	// 400일전
   document.getElementById("start_date").value= time7.toISOString().slice(0,10);
-  document.getElementById("end_date").value= new Date().toISOString.slice(0,10);
+  document.getElementById("end_date").value= new Date().toISOString().slice(0,10);
+
+  //ajax 활용
+  //https://www.w3schools.com/js/js_ajax_http.asp
+/*  function loadDocArray() {
+    const xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        // t_body
+        document.getElementById("t_body").innerHTML =
+                this.responseText;
+      }
+    };
+    xhttp.open("GET", "/txt/ajax_info.txt");
+    xhttp.send();
+  }*/
+
+  //json 활용
+
+  function loadDocArray() {
+
+    const xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+
+        console.log(this.responseText);
+        // json형태의 텍스트 문자열을 json으로 인식하기 위해 지정
+        const myAjax = JSON.parse(this.responseText);
+        console.log(myAjax);
+        // json형태를 이런 느낌으로 하는구나
+        let ajaxTD ="";
+        ajaxTD += '<tr id="tr_loop" className = "tr_td">';
+        ajaxTD += '<td><input type="checkbox", name="coffee_id" value="ID"></td>';
+        ajaxTD += '<td>' + myAjax.coffee_id +'</td>';
+        ajaxTD += '<td>' + myAjax.name +'</td>';
+        ajaxTD += '<td>' + myAjax.kind +'</td>';
+        ajaxTD += '<td>' + myAjax.price +'</td>';
+        ajaxTD += '<td>' + myAjax.reg_day +'</td>';
+        ajaxTD += '<td>' + myAjax.mod_day +'</td>';
+        ajaxTD += '<td><a href="/v1/update?coffee_id=' +myAjax.coffee_id +'">수정</a></td>';
+        ajaxTD += '<td><a href="/v1/delete?coffee_id=' +myAjax.coffee_id +'">삭제</a></td>';
+        ajaxTD += '</tr>';
+
+
+
+
+        // t_body
+        document.getElementById("t_body").innerHTML =ajaxTD;
+      }
+    };
+    xhttp.open("GET", "/txt/ajax_array.txt");
+    xhttp.send();
+  }
+
+
 </script>
 </body>
 </html>

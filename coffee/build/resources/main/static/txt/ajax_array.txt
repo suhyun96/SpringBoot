@@ -1,0 +1,1 @@
+{"coffee_id":"100", "name":"메뉴명", "kind":"종류", "price":"가격", "reg_day":"등록일", "mod_day":"수정일"}
