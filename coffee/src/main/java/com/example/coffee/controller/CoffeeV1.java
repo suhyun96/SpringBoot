@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -58,6 +59,56 @@ public class CoffeeV1 {
         model.addAttribute("list",list);
 
         return "/v1/coffee";
+    }
+
+    @GetMapping("/insert")
+    public String doInsert(){
+        return "/v1/coffee_Ins";
+    }
+
+    // 위에서는 HttpServletRequest request 이걸 받았는데 파라미터 몇 개 안 되면 다 넣어줘도 오케
+    // html에 각 name에 적혀있던 태그들의 값을 넣음
+    // ex ) <label>가 격 </label><input type="number" name="price"></p> price태그에 있는 값이 들어감
+    @PostMapping("/insert")
+    public String doInsertPost(@RequestParam(value="name") String name ,@RequestParam(value="kind") String kind ,@RequestParam(value="price") String price, Model model  ){
+
+        log.info(name + kind + price );
+        int intI = coffeeV1Service.doInsert(name,kind,price);
+        return "redirect:/v1/coffee";
+    }
+
+    // 수정하기 get -> 줄 마다 있던 수정
+    @GetMapping("/update")
+    public String doUpdate(@RequestParam(value="coffee_id") String strCoffee_id , Model model){
+        // 맵인 거는 한 줄 그게 map이니까
+        Map<String,String> map = coffeeV1Service.doListOne(strCoffee_id);
+        model.addAttribute("map",map);
+
+        return "/v1/coffee_Up";
+    }
+
+    /* 수정하기 Post , @RequestParam 사용 */
+    // 수정하기에서 받은 값을 여기서 다시 처리하고 수정후 리다이렉트해서 화면 표시
+    @PostMapping("/update")
+    public String doUpdatePost(
+            @RequestParam(value="coffee_id") String strCoffee_id,
+            @RequestParam(value="name") String strName,
+            @RequestParam(value="kind") String strKind,
+            @RequestParam(value="price") String strPrice
+    ){
+
+        int intI  = coffeeV1Service.doUpdate(strCoffee_id, strName, strKind, strPrice);
+
+        return "redirect:/v1/coffee";
+    }
+
+    /* 삭제하기 1 row , @RequestParam 사용  */
+    @GetMapping("/delete")
+    public String doDelete(@RequestParam(value="coffee_id") String strCoffee_id){
+
+        int intI = coffeeV1Service.doDelete(strCoffee_id);
+
+        return "redirect:/v1/coffee";
     }
 
 }

@@ -37,4 +37,36 @@
 
     </select>
 
+    <!--커피 메뉴 등록하기 price는 숫자로 변경 cast함수-->
+    <insert id="doInsert">
+        Insert into coffee(name,kind,price)
+        Values (#{name},#{kind}, CAST(#{price} as INTEGER))
+
+    </insert>
+
+    <!-- 1 row 조회  -->
+    <select id="doListOne" resultType="map">
+        SELECT coffee_id, name, kind, price,
+        DATE_FORMAT(reg_day,'%Y.%m.%d') AS reg_day, DATE_FORMAT(mod_day,'%Y.%m.%d') AS mod_day
+        FROM coffee
+        WHERE coffee_id = CAST(#{strCoffee_id} as INTEGER)
+    </select>
+
+    <!-- 커피메뉴 수정하기 , 파라메터는 자동으로 인식됨 , 가격은 숫자로 변환 -->
+    <insert id="doUpdate">
+        UPDATE coffee
+        SET name=#{strName}, kind=#{strKind}, price=CAST(#{strPrice} as INTEGER)
+        WHERE coffee_id = CAST(#{strCoffeeId} as INTEGER)
+    </insert>
+
+
+    <!-- 커피메뉴 삭제 1 row -->
+    <insert id="doDelete">
+        Delete from  coffee
+        WHERE coffee_id = CAST(#{strCoffee_id} as INTEGER)
+    </insert>
+
+
+
+
 </mapper>

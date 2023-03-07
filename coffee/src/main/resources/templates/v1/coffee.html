@@ -35,8 +35,9 @@
         <option value="3.스무디">3.스무디</option>
       </select>
         &nbsp;&nbsp;<input type="submit" value="조회" style="width: 80px;height: 30px;font-weight: bold; font-size: medium">
-        &nbsp;&nbsp;<button onclick="document.location='/v1/insert'" value="등록" style="width: 80px;height: 30px;font-weight: bold; font-size: medium">등록</button>
-        &nbsp;&nbsp;<button onclick="document.location='/v1/'" value="삭제" style="width: 80px;height: 30px;font-weight: bold; font-size: medium">삭제</button>
+        <!--버튼 누르면 하이퍼링크로 -->
+        &nbsp;&nbsp;<button style="width: 80px;height: 30px;font-weight: bold; font-size: medium"><a href="/v1/insert">등록</a></button>
+          <button style="width: 80px;height: 30px;font-weight: bold; font-size: medium"><a href="/v1/deleteAll">삭제</a></button>
       </fieldset>
     </form>
   </div>

@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4419727b-82fc-461f-b508-d2902542a5bf" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/logback-spring.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/v1/coffee_Up.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.6.1/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.6.1/checksums/checksums.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.6.1/dependencies-accessors/dependencies-accessors.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.6.1/dependencies-accessors/dependencies-accessors.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.6.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.6.1/executionHistory/executionHistory.bin" afterDir="false" />
@@ -15,15 +15,14 @@
       <change beforePath="$PROJECT_DIR$/.gradle/7.6.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.6.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/coffee/controller/CoffeeV1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/coffee/controller/CoffeeV1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/coffee/dao/CoffeeV1Dao.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/coffee/dao/CoffeeV1Dao.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/coffee/service/CoffeeV1Service.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/coffee/service/CoffeeV1Service.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/main/sqlmapper/CoffeeV1Sql.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/sqlmapper/CoffeeV1Sql.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/main/templates/v1/coffee.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/v1/coffee.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/CoffeeV1.class.uniqueId0" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/CoffeeV1.class.uniqueId0" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/v1/coffee_Ins.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/v1/coffee_Ins.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/CoffeeV1.class.uniqueId0" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/coffee/controller/CoffeeV1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/coffee/controller/CoffeeV1.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/coffee/dao/CoffeeV1Dao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/coffee/dao/CoffeeV1Dao.java" afterDir="false" />
@@ -31,6 +30,7 @@
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/sqlmapper/CoffeeV1Sql.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/sqlmapper/CoffeeV1Sql.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/v1/coffee.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/v1/coffee.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/v1/coffee_Ins.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/v1/coffee_Ins.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,11 +64,15 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "DefaultHtmlFileTemplate": "HTML File",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/suhyun/Desktop/code/SpringBoot/coffee",
+    "last_opened_file_path": "/Users/suhyun/Desktop/code/SpringBoot/coffee/src/main/resources/templates/v1",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -82,8 +86,8 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/resources/templates/home" />
       <recent name="$PROJECT_DIR$/src/main/resources/templates/v1" />
+      <recent name="$PROJECT_DIR$/src/main/resources/templates/home" />
     </key>
   </component>
   <component name="RunManager">
@@ -103,7 +107,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1678164342639</updated>
-      <workItem from="1678196614553" duration="400000" />
+      <workItem from="1678196614553" duration="1627000" />
+      <workItem from="1678198250199" duration="607000" />
+      <workItem from="1678198862223" duration="1851000" />
     </task>
     <servers />
   </component>
