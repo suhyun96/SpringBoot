@@ -1,15 +1,15 @@
 package com.example.coffee.controller;
 
 import com.example.coffee.service.CoffeeV1Service;
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import lombok.extern.java.Log;
 import lombok.extern.log4j.Log4j2;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -29,16 +29,59 @@ public class CoffeeV1 {
 
     @GetMapping("/coffee")
     public String doCoffee(Model model){
-
-        /*전체 리스트 조회*/
+        // html onload() 함수로 대체
+/*
+        *//*전체 리스트 조회*//*
         //디비에 있는 값들 한 행을 map 그 묶음을 list로
         List<Map<String,String>> list = coffeeV1Service.doCoffeeList();
 
         //System.out.println(list);
         //모델에다가 값 넣어주기 이제 웹으로 넘겨줌
-        model.addAttribute("list",list);
+        model.addAttribute("list",list);*/
         return "/v1/coffee";
     }
+
+
+    @GetMapping("/coffeeAjax")
+    //rest controller  -> 가져올 거는 나야 내가 끝내줄게  리스폰스를 리턴으로 뿌림 txt, json 등
+    //자기가 마지막이라 값을 넘기는 게 아니라 최정처리를 하는것 나중에 json response해도 되는건가?
+    @ResponseBody
+    public String doCoffeeAjax(Model model){
+        String strArr = "{\"coffee_list\":[{\"coffee_id\":\"100\",\"name\":\"메뉴명\",\"kind\":\"종류\",\"price\":\"가격\",\"reg_day\":\"등록일\",\"mod_day\":\"수정일\"},{\"coffee_id\":\"100\",\"name\":\"메뉴명\",\"kind\":\"종류\",\"price\":\"가격\",\"reg_day\":\"등록일\",\"mod_day\":\"수정일\"},{\"coffee_id\":\"100\",\"name\":\"메뉴명\",\"kind\":\"종류\",\"price\":\"가격\",\"reg_day\":\"등록일\",\"mod_day\":\"수정일\"}]}";
+        return strArr;
+        //return "/v1/coffeeAjax";
+    }
+
+    @PostMapping("/coffeeAjaxPost")
+    @ResponseBody
+    public String doCoffeePostAjax(HttpServletRequest request){
+        // html form으로 받은 리퀘스트 항목의 값을 추출
+
+        String strStart_date = request.getParameter("start_date");
+        String strEnd_date = request.getParameter("end_date");
+        String strName = request.getParameter("name");
+        String strKind = request.getParameter("kind");
+        // 이걸로 터미널창에 로그 확인 가능
+        List<Map<String,String>> list = coffeeV1Service.doCoffeeList(strStart_date,strEnd_date,strName,strKind);
+        log.info(list);
+
+        JSONArray jsonArray = new JSONArray();
+        for(Map<String , String> fMap : list){
+            // 요즘 안 쓰나 보네 org.JSON
+            // fMAP 을 끌어와서 json한 줄 만들어짐
+            JSONObject restObj = new JSONObject(fMap);
+            log.info(restObj);
+            //json 배열에 json값들 한줄 한줄 배열로 들어가게 됨
+            jsonArray.put(restObj);
+        }
+
+        String strArr = "{\"coffee_list\":";
+        strArr+= String.valueOf(jsonArray);
+        strArr+="}";
+
+        return strArr;
+    }
+
 
 
     @PostMapping("/coffee")
